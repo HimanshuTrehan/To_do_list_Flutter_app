@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'file:///C:/Users/Asus/AndroidStudioProjects/to_do_list/lib/Screens/Add_Task.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeScreen extends StatefulWidget
 {
@@ -14,7 +16,14 @@ class _HomeState extends State<HomeScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
+        onPressed: () {
+          Fluttertoast.showToast(
+            msg: "This is Toast messaget",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+          );
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AddTask(),));
+        },
         child: Icon(Icons.add),
         backgroundColor: Colors.redAccent,
 
@@ -58,12 +67,31 @@ class _HomeState extends State<HomeScreen>{
 }
 
 Widget _Taskbuild(int index) {
-  return ListTile(
-    title: Text("Task $index"),
-    subtitle: Text("12-1-2021"),
-    trailing: Checkbox(onChanged: (bool value) {  }, value: true,
-      activeColor: Colors.red,
-      
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 10),
+    child: Container(
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black,width: 2)
+      ),
+      child: ListTile(
+      onTap: ()
+        {
+          Fluttertoast.showToast(
+            msg: "This is Toast messaget",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+          );
+        },
+        title: Text("Task $index"),
+        subtitle: Text("12-1-2021"),
+        trailing: Checkbox(onChanged: (bool value) {
+          value:false;
+        }, value: true,
+          activeColor: Colors.red,
+
+        ),
+      ),
     ),
   );
 }
